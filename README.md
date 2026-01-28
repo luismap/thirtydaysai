@@ -3,8 +3,11 @@
 Repository to follow the [30 days ai challenge](https://github.com/streamlit/30DaysOfAI)
 using streamlit and snowflake
 
-
+# references
 * eval guide optimizations of llm judge [link](https://www.snowflake.com/en/engineering-blog/eval-guided-optimization-llm-judges-rag-triad/)
+* ai observability [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/ai-observability)
+* getting started with ai observability [link](https://github.com/Snowflake-Labs/sfguide-getting-started-with-ai-observability)
+
 
 # when doing rag with snowflake and trulens keep in mind.
 
@@ -36,3 +39,4 @@ CREATE STAGE TRULENS_STAGE
 * Include production queries in your test set
 * Compare metrics across app versions
 * Use evaluation results to prioritize improvements
+
