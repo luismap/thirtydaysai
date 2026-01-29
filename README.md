@@ -7,6 +7,8 @@ using streamlit and snowflake
 * eval guide optimizations of llm judge [link](https://www.snowflake.com/en/engineering-blog/eval-guided-optimization-llm-judges-rag-triad/)
 * ai observability [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/ai-observability)
 * getting started with ai observability [link](https://github.com/Snowflake-Labs/sfguide-getting-started-with-ai-observability)
+* cortex agents [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)
+* cortex analyst [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)
 
 
 # when doing rag with snowflake and trulens keep in mind.
