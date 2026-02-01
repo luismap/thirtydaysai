@@ -133,34 +133,59 @@ def call_agent(query: str):
                 result["text"] = f":material/error: API Error: {resp.text}"
                 return result
             #print(resp)
+            # '''example of event flow:
+            #     event: response.thinking.delta
+            #     data: {"content_index":3,"sequence_number":74,"text":" chart."}
+            #     ...
+            #     event: n
+            #     data: data n
+            #     '''
+
+            # current disticnt events.
+            # {'response.tool_use', 'response.tool_result.status', 'response', 'response.thinking.delta', 'response.text', 'done', 'response.text.delta', 'response.thinking', 'response.tool_result', 'response.status'}
+
+            distinct_event = set()
             for line in resp.iter_lines():
+                
+                #TODO: response has change to above.
                 #print(line)
                 # seems the api sends first the event, and the the data.
-                if line and line.decode('utf-8').startswith('data: '):
-                    #print(line)
-                    data_str = line.decode('utf-8')[6:]
-                    #print(data_str)
-                    if data_str == '[DONE]':
+                #print(resp.__dict__)
+                #print("###########")
+                current_chunk = line.decode('utf-8')
+                #current_chunk_dict = json.loads(current_chunk)
+                #print(f"BEGIN {current_chunk} END")
+                
+                if current_chunk == '[DONE]':
                         break
+                
+                if current_chunk.startswith('event: '):
+                    content = current_chunk[7:] # event: value
+                    event_holder = {'event': content}
+                    distinct_event.add(content)
+                    #print(f"[debug] found event {event_holder}")
+                    continue
+
+                if current_chunk.startswith('data: '):
+                    #print(line)
+                    data_str = current_chunk[6:]
+                    #print(data_str)
                     try:
                         event = json.loads(data_str)
+                        event.update(event_holder)
                         #print(event)
+                        event_holder = ""
                         result["events"].append(event) # there seems to be no event key
-                        
                         event_type = event.get('event', '')
-                        data = event.get('data', {})
+                        #data = event.get('text', {}) #api change to text key.??
+                        data = event
+                        if event_type == 'response.tool_use':
+                            print(f"debug: current event {event}")
                         
                         # Parse response event with thinking - capture first occurrence only
-                        if event_type == "response" and not result["thinking"]:
-                            content_list = data.get("content", [])
-                            for content_item in content_list:
-                                if "thinking" in content_item and not result["thinking"]:
-                                    thinking_obj = content_item.get("thinking", {})
-                                    if isinstance(thinking_obj, dict):
-                                        result["thinking"] = thinking_obj.get("text", "")
-                                    elif isinstance(thinking_obj, str):
-                                        result["thinking"] = thinking_obj
-                                    break  # Stop after finding first thinking
+                        if event_type == "response.thinking" and not result["thinking"]:
+                            result["thinking"] = event.get('text', {})
+                            continue  # Stop after finding first thinking
                         
                         if event_type == "response.text.delta":
                             result["text"] += data.get("text", "")
@@ -184,7 +209,9 @@ def call_agent(query: str):
                                 result["table_data"] = result_set
                     except:
                         pass
-        
+            
+            print(distinct_event)
+            #print(result_set)
         return result
         
     except Exception as e:
