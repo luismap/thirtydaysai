@@ -318,13 +318,13 @@ tables:
             if all_good:
                 status.update(label=":material/celebration: Day 27 data ready! (Day 28+ data optional)", state="complete")
                 st.balloons()
-    else:
+            else:
                 status.update(label="Complete Steps 1-3 for Day 27, Steps 4-5 for Day 28+", state="error")
 
 # Create Agent Tab
 with tab1:
     st.markdown("### Create Sales Conversation Agent")
-    
+    #definition is correct, but agent was not create: TODO: investigate if this still happens 
     instructions = """You are a Sales Intelligence Assistant with access to two data sources:
 1. Sales conversation transcripts (via ConversationSearch tool)
 2. Sales metrics and deal data (via SalesAnalyst tool)
