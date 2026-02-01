@@ -9,6 +9,7 @@ using streamlit and snowflake
 * getting started with ai observability [link](https://github.com/Snowflake-Labs/sfguide-getting-started-with-ai-observability)
 * cortex agents [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)
 * cortex analyst [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)
+* cortext agent REST API [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-rest-api)
 
 
 # when doing rag with snowflake and trulens keep in mind.
