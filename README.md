@@ -10,6 +10,8 @@ using streamlit and snowflake
 * cortex agents [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)
 * cortex analyst [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)
 * cortext agent REST API [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-rest-api)
+* agents.md blogpost [link](https://blog.streamlit.io/vibe-code-streamlit-apps-with-ai-using-agents-md-04b7480f754e)
+
 
 
 # when doing rag with snowflake and trulens keep in mind.
