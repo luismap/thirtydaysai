@@ -11,7 +11,7 @@ using streamlit and snowflake
 * cortex analyst [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)
 * cortext agent REST API [link](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-rest-api)
 * agents.md blogpost [link](https://blog.streamlit.io/vibe-code-streamlit-apps-with-ai-using-agents-md-04b7480f754e)
-
+* normalizing logs with snowflake [link](https://medium.com/snowflake/normalizing-your-security-logs-in-snowflake-dfa6de2cd0de)
 
 
 # when doing rag with snowflake and trulens keep in mind.
